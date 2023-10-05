@@ -70,7 +70,9 @@ function validate() {
   }
 
   // Validate location
-  const locationInputs = document.querySelectorAll('input[name="location"]');
+  const locationInputs = Array.from(document.querySelectorAll('input[name="location"]'));
+
+
   const locationError = document.getElementById('location-error');
   let isLocationSelected = false;
 
