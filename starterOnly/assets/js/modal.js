@@ -85,34 +85,59 @@ function validate() {
     quantityError.textContent = "";
   }
 
-  // Validation pour la localisation.
+  // Début de la section de validation pour la localisation
+
+  // Convertit NodeList des éléments 'input' ayant l'attribut name="location" en tableau
+  // Les éléments NodeList ne peuvent pase être utilisés avec des fonction js style (map, forEach etc ...)
   const locationInputs = Array.from(
     document.querySelectorAll('input[name="location"]')
   );
+
+  // Récupère l'élément HTML qui affiche les erreurs de localisation
   const locationError = document.getElementById("location-error");
+  
+  // Initialise un drapeau pour vérifier si une localisation a été sélectionnée
   let isLocationSelected = false;
+  
+  // Parcourt chaque élément d'entrée pour vérifier si l'un d'entre eux est coché
   locationInputs.forEach((input) => {
     if (input.checked) {
       isLocationSelected = true;
     }
   });
+
+  // Si aucune localisation n'est sélectionnée, affiche une erreur
   if (!isLocationSelected) {
     locationError.textContent = "Veuillez choisir une localisation.";
-    isValid = false;
+    isValid = false; // Met à jour le statut de validation
   } else {
+    // Si une localisation est sélectionnée, efface tout message d'erreur précédent
     locationError.textContent = "";
   }
 
-  // Validation pour les conditions d'utilisation.
+// Fin de la section de validation pour la localisation
+
+
+// Début de la section de validation pour les conditions d'utilisation
+
+  // Récupère l'élément HTML pour la case à cocher des conditions d'utilisation
   const conditions = document.getElementById("checkbox1");
+  
+  // Récupère l'élément HTML qui affiche les erreurs pour les conditions d'utilisation
   const conditionsError = document.getElementById("conditions-error");
+  
+  // Si les conditions d'utilisation ne sont pas acceptées, affiche une erreur
   if (!conditions.checked) {
     conditionsError.textContent =
       "Vous devez accepter les conditions d'utilisation.";
-    isValid = false;
+    isValid = false; // Met à jour le statut de validation
   } else {
+    // Si les conditions d'utilisation sont acceptées, efface tout message d'erreur précédent
     conditionsError.textContent = "";
   }
+
+// Fin de la section de validation pour les conditions d'utilisation
+
 
   // Retourne l'indicateur de validité.
   return isValid;
