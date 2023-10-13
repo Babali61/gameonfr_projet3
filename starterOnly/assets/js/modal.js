@@ -125,6 +125,8 @@ function validate() {
   } else {
     conditionsError.textContent = '';
   }
+
+  return isValid
 }
 
 // Récupère le formulaire et le corps du modal.
