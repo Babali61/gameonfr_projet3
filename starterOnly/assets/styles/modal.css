@@ -346,9 +346,24 @@ input[data-error]::after {
   opacity: 0;
 }
 
+.radio-input {
+  display: none;
+}
+
+.radio-input:checked+.checkbox-label .checkbox-icon::after,
+.radio-input:checked+.checkbox2-label .checkbox-icon::after {
+  opacity: 1;
+}
+
+.radio-input:checked+.checkbox2-label .checkbox-icon {
+  background: #279e7a;
+ }
+
+
 .checkbox-input {
   display: none;
 }
+
 
 .checkbox-input:checked+.checkbox-label .checkbox-icon::after,
 .checkbox-input:checked+.checkbox2-label .checkbox-icon::after {
