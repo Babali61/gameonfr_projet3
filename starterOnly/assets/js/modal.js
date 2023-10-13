@@ -95,7 +95,7 @@ function validate() {
   // Convertit NodeList des éléments 'input' ayant l'attribut name="location" en tableau
   // Les éléments NodeList ne peuvent pase être utilisés avec des fonction js style (map, forEach etc ...)
   const locationInputs = Array.from(
-    document.querySelectorAll('input[name="location"]')
+    document.querySelectorAll('.radio-input')
   );
 
   // Récupère l'élément HTML qui affiche les erreurs de localisation
@@ -104,43 +104,52 @@ function validate() {
   // Initialise un drapeau pour vérifier si une localisation a été sélectionnée
   let isLocationSelected = false;
 
-  // Parcourt chaque élément d'entrée pour vérifier si l'un d'entre eux est coché
   locationInputs.forEach((input) => {
     if (input.checked) {
       isLocationSelected = true;
     }
   });
-
-  // Si aucune localisation n'est sélectionnée, affiche une erreur
+  
   if (!isLocationSelected) {
     locationError.textContent = "Veuillez choisir une localisation.";
     isValid = false; // Met à jour le statut de validation
   } else {
-    // Si une localisation est sélectionnée, efface tout message d'erreur précédent
     locationError.textContent = "";
   }
+  
 
   // Fin de la section de validation pour la localisation
+  // Début de la section de validation pour les centres d'intérêt
 
-  // Début de la section de validation pour les conditions d'utilisation
+  // Convertit NodeList des éléments 'input.checkbox-input' en tableau
+  const interestsInputs = Array.from(
+    document.querySelectorAll('.checkbox-input')
+  );
 
-  // Récupère l'élément HTML pour la case à cocher des conditions d'utilisation
-  const conditions = document.getElementById("checkbox1");
+  // Récupère l'élément HTML qui affiche les erreurs de centres d'intérêt
+  const interestsError = document.getElementById("conditions-error");
 
-  // Récupère l'élément HTML qui affiche les erreurs pour les conditions d'utilisation
-  const conditionsError = document.getElementById("conditions-error");
+  // Initialise un drapeau pour vérifier si un centre d'intérêt a été sélectionné
+  let isInterestSelected = false;
 
-  // Si les conditions d'utilisation ne sont pas acceptées, affiche une erreur
-  if (!conditions.checked) {
-    conditionsError.textContent =
-      "Vous devez accepter les conditions d'utilisation.";
-    isValid = false; // Met à jour le statut de validation
-  } else {
-    // Si les conditions d'utilisation sont acceptées, efface tout message d'erreur précédent
-    conditionsError.textContent = "";
+  // Parcourt chaque élément d'entrée pour vérifier si l'un d'entre eux est coché
+interestsInputs.forEach((input) => {
+  if (input.checked) {
+    isInterestSelected = true;
   }
+});
 
-  // Fin de la section de validation pour les conditions d'utilisation
+// Si aucun centre d'intérêt n'est sélectionné, affiche une erreur
+if (!isInterestSelected) {
+  interestsError.textContent = "Veuillez choisir au moins un centre d'intérêt.";
+  isValid = false; // Met à jour le statut de validation
+} else {
+  // Si un centre d'intérêt est sélectionné, efface tout message d'erreur précédent
+  interestsError.textContent = "";
+}
+
+  // Fin de la section de validation pour les centres d'intérêt
+
 
   // Retourne l'indicateur de validité.
   return isValid;
