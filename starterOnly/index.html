@@ -117,34 +117,22 @@
               <span id="location-error" class="error-message"></span>
             </div>
             <div class="formData">
-              <p class="text-label">Quelles sont vos centres d'intérêts ?</p>
-              <div class="formData">
-                <input class="checkbox-input" type="checkbox" id="checkbox1" >
-                <label class="checkbox-label" for="checkbox1">
-                  <span class="checkbox-icon"></span>
-                  Sport
-                </label>
-                <input class="checkbox-input" type="checkbox" id="checkbox2">
-                <label class="checkbox-label" for="checkbox2">
-                  <span class="checkbox-icon"></span>
-                  Jeux vidéos
-                </label>
-                <input class="checkbox-input" type="checkbox" id="checkbox3">
-                <label class="checkbox-label" for="checkbox3">
-                  <span class="checkbox-icon"></span>
-                  Cuisine
-                </label>
-                <input class="checkbox-input" type="checkbox" id="checkbox4">
-                <label class="checkbox-label" for="checkbox4">
-                  <span class="checkbox-icon"></span>
-                  Musique
-                </label>
-              </div>
+              <input class="checkbox-input" type="checkbox" id="checkbox1" checked />
+              <label class="checkbox2-label" for="checkbox1" required>
+                <span class="checkbox-icon"></span>
+                J'ai lu et accepté les conditions d'utilisation.
+              </label>
+
+              <br>
               <span id="conditions-error" class="error-message"></span>
+              <input class="checkbox-input" type="checkbox" id="checkbox2" />
+              <label class="checkbox2-label" for="checkbox2">
+                <span class="checkbox-icon"></span>
+                Je souhaite être prévenu des prochains évènements.
+              </label>
+              <br>
             </div>
-            <div class="formData">
-              <input class="btn-submit button" type="submit" value="C'est parti">
-            </div>
+            <input class="btn-submit" type="submit" class="button" value="C'est parti" />
           </form>
         </div>
       </div>
