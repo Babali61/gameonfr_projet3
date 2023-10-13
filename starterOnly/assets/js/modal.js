@@ -56,8 +56,13 @@ function validate() {
   // Validation pour l'email.
   const email = document.getElementById("email");
   const emailError = document.getElementById("email-error");
+  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
   if (email.value.trim() === "") {
     emailError.textContent = "Le champ de l'e-mail ne peut pas être vide.";
+    isValid = false;
+  } else if (!emailRegex.test(email.value.trim())) {
+    emailError.textContent = "Veuillez entrer une adresse e-mail valide.";
     isValid = false;
   } else {
     emailError.textContent = "";
@@ -95,10 +100,10 @@ function validate() {
 
   // Récupère l'élément HTML qui affiche les erreurs de localisation
   const locationError = document.getElementById("location-error");
-  
+
   // Initialise un drapeau pour vérifier si une localisation a été sélectionnée
   let isLocationSelected = false;
-  
+
   // Parcourt chaque élément d'entrée pour vérifier si l'un d'entre eux est coché
   locationInputs.forEach((input) => {
     if (input.checked) {
@@ -115,17 +120,16 @@ function validate() {
     locationError.textContent = "";
   }
 
-// Fin de la section de validation pour la localisation
+  // Fin de la section de validation pour la localisation
 
-
-// Début de la section de validation pour les conditions d'utilisation
+  // Début de la section de validation pour les conditions d'utilisation
 
   // Récupère l'élément HTML pour la case à cocher des conditions d'utilisation
   const conditions = document.getElementById("checkbox1");
-  
+
   // Récupère l'élément HTML qui affiche les erreurs pour les conditions d'utilisation
   const conditionsError = document.getElementById("conditions-error");
-  
+
   // Si les conditions d'utilisation ne sont pas acceptées, affiche une erreur
   if (!conditions.checked) {
     conditionsError.textContent =
@@ -136,8 +140,7 @@ function validate() {
     conditionsError.textContent = "";
   }
 
-// Fin de la section de validation pour les conditions d'utilisation
-
+  // Fin de la section de validation pour les conditions d'utilisation
 
   // Retourne l'indicateur de validité.
   return isValid;
