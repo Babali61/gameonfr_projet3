@@ -117,42 +117,14 @@ function validate() {
     locationError.textContent = "";
   }
   
-
-  // Fin de la section de validation pour la localisation
-  // Début de la section de validation pour les centres d'intérêt
-
-  // Convertit NodeList des éléments 'input.checkbox-input' en tableau
-  const interestsInputs = Array.from(
-    document.querySelectorAll('.checkbox-input')
-  );
-
-  // Récupère l'élément HTML qui affiche les erreurs de centres d'intérêt
-  const interestsError = document.getElementById("conditions-error");
-
-  // Initialise un drapeau pour vérifier si un centre d'intérêt a été sélectionné
-  let isInterestSelected = false;
-
-  // Parcourt chaque élément d'entrée pour vérifier si l'un d'entre eux est coché
-interestsInputs.forEach((input) => {
-  if (input.checked) {
-    isInterestSelected = true;
+  const conditions = document.getElementById('checkbox1');
+  const conditionsError = document.getElementById('conditions-error');
+  if (!conditions.checked) {
+    conditionsError.textContent = "Vous devez accepter les conditions d'utilisation.";
+    isValid = false;
+  } else {
+    conditionsError.textContent = '';
   }
-});
-
-// Si aucun centre d'intérêt n'est sélectionné, affiche une erreur
-if (!isInterestSelected) {
-  interestsError.textContent = "Veuillez choisir au moins un centre d'intérêt.";
-  isValid = false; // Met à jour le statut de validation
-} else {
-  // Si un centre d'intérêt est sélectionné, efface tout message d'erreur précédent
-  interestsError.textContent = "";
-}
-
-  // Fin de la section de validation pour les centres d'intérêt
-
-
-  // Retourne l'indicateur de validité.
-  return isValid;
 }
 
 // Récupère le formulaire et le corps du modal.
